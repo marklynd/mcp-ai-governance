@@ -1,5 +1,7 @@
 # mcp-ai-governance
 
+[![CI](https://github.com/marklynd/mcp-ai-governance/actions/workflows/ci.yml/badge.svg)](https://github.com/marklynd/mcp-ai-governance/actions/workflows/ci.yml) [![Container](https://github.com/marklynd/mcp-ai-governance/actions/workflows/publish-container.yml/badge.svg)](https://github.com/marklynd/mcp-ai-governance/actions/workflows/publish-container.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+
 An MCP server that turns AI governance work into callable tools: map a control
 description onto **NIST AI RMF 1.0**, **ISO/IEC 42001:2023**, the **EU AI Act
 (Regulation (EU) 2024/1689)** and **NIST CSF 2.0**; triage a use case against the
@@ -379,3 +381,16 @@ mapping engine needs no changes.
 ## Licence
 
 MIT. Copyright (c) 2026 Mark Lynd.
+
+---
+
+## Run it as a container
+
+A multi-stage image is published to the GitHub Container Registry on every push to `main`.
+
+```bash
+docker pull ghcr.io/marklynd/mcp-ai-governance:latest
+docker run --rm -i ghcr.io/marklynd/mcp-ai-governance:latest
+```
+
+The server speaks MCP over stdio, so `-i` is required and `-t` must be omitted. To wire it into Claude Desktop, point the command at `docker` with `["run","--rm","-i","ghcr.io/marklynd/mcp-ai-governance:latest"]` as the args.
