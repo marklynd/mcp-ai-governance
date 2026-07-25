@@ -1,0 +1,93 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-ai-governance"
+version = "0.1.0"
+description = "MCP server exposing AI governance and compliance mapping (NIST AI RMF, ISO/IEC 42001, EU AI Act, NIST CSF) as callable tools."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Mark Lynd", email = "mark@marklynd.com" }]
+keywords = [
+    "mcp",
+    "model-context-protocol",
+    "ai-governance",
+    "nist-ai-rmf",
+    "iso-42001",
+    "eu-ai-act",
+    "compliance",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Legal Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    # The tools themselves are pure stdlib. The MCP SDK is only needed to serve
+    # them over a transport.
+    "mcp>=1.2,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "mypy>=1.9",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+mcp-ai-governance = "mcp_ai_governance.server:main"
+
+[project.urls]
+Homepage = "https://github.com/marklynd/mcp-ai-governance"
+Issues = "https://github.com/marklynd/mcp-ai-governance/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_ai_governance"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q --strict-markers"
+
+[tool.mypy]
+python_version = "3.10"
+packages = ["mcp_ai_governance"]
+mypy_path = "src"
+strict = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests", "evals"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "A", "C4", "SIM", "ARG", "D"]
+ignore = [
+    "D203",  # incompatible with D211
+    "D213",  # incompatible with D212
+    # Line length is not enforced by the linter. The reference-data modules hold
+    # long framework titles, evidence strings and signal lists that are more
+    # readable on one line than wrapped. Use `ruff format` for the code itself.
+    "E501",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D100", "D101", "D102", "D103", "ARG"]
+"evals/*" = ["D103"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

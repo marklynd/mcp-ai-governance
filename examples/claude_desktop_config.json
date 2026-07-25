@@ -1,0 +1,17 @@
+{
+  "//": "Add this to claude_desktop_config.json. macOS: ~/Library/Application Support/Claude/claude_desktop_config.json  Windows: %APPDATA%\\Claude\\claude_desktop_config.json  Restart Claude Desktop afterwards.",
+  "//1": "Option A (recommended): installed with pipx or pip, using the console script.",
+  "//2": "Option B: run from a clone without installing, shown as ai-governance-dev below. Replace ABSOLUTE_PATH_TO_REPO.",
+  "mcpServers": {
+    "ai-governance": {
+      "command": "mcp-ai-governance"
+    },
+    "ai-governance-dev": {
+      "command": "python3",
+      "args": ["-m", "mcp_ai_governance"],
+      "env": {
+        "PYTHONPATH": "ABSOLUTE_PATH_TO_REPO/mcp-ai-governance/src"
+      }
+    }
+  }
+}

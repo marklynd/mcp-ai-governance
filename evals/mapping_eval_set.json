@@ -1,0 +1,282 @@
+{
+  "name": "control-mapping-v1",
+  "description": "Labelled control descriptions with the framework controls a governance reviewer would expect map_control to return. Labels are gold sets: a case counts as a hit at rank k if ANY of the listed controls appears in the top k for that framework. A null expectation means the framework is not evaluated for that case, which is itself a documented statement about coverage.",
+  "labelled_by": "Mark Lynd",
+  "labelling_notes": [
+    "Labels were written from the framework documents before running the tool, not read back from its output.",
+    "Where a framework genuinely has no close analogue for a practice, the expectation is null rather than a forced match. Forcing a label there would make the score look better and the tool worse.",
+    "Multiple acceptable controls per framework reflects real crosswalk practice: more than one clause legitimately covers most practices."
+  ],
+  "cases": [
+    {
+      "id": "human-review-gate",
+      "description": "A named reviewer must approve every AI-drafted customer communication before it is sent, and the reviewer can reject or edit the draft.",
+      "expected": {
+        "nist_ai_rmf": ["MAP 3.5", "GOVERN 3.2", "MANAGE 2.4", "MANAGE 1.1"],
+        "iso_42001": ["A.9.2", "A.6.2.6"],
+        "eu_ai_act": ["Art. 14", "Art. 26"]
+      }
+    },
+    {
+      "id": "immutable-inference-log",
+      "description": "Every model inference is written to an immutable audit log with a seven year retention period.",
+      "expected": {
+        "nist_ai_rmf": ["MANAGE 4.1"],
+        "iso_42001": ["A.6.2.8", "7.5"],
+        "eu_ai_act": ["Art. 12"]
+      }
+    },
+    {
+      "id": "bias-testing",
+      "description": "We test the model for bias across protected groups before each release and document the fairness metrics we used.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 2.11"],
+        "iso_42001": ["A.5.4", "A.5.2"],
+        "eu_ai_act": ["Art. 10"]
+      }
+    },
+    {
+      "id": "system-inventory",
+      "description": "We maintain a central inventory of every AI system in use, including shadow AI discovered on employee laptops.",
+      "expected": {
+        "nist_ai_rmf": ["GOVERN 1.6"],
+        "iso_42001": ["A.4.2"],
+        "eu_ai_act": ["Art. 49"]
+      }
+    },
+    {
+      "id": "vendor-due-diligence",
+      "description": "Before onboarding a foundation model provider we run vendor due diligence covering security, data use and their model change practices.",
+      "expected": {
+        "nist_ai_rmf": ["GOVERN 6.1", "MANAGE 3.1", "MAP 4.1", "MAP 4.2"],
+        "iso_42001": ["A.10.3", "A.10.2"],
+        "eu_ai_act": ["Art. 53"]
+      }
+    },
+    {
+      "id": "ai-literacy-training",
+      "description": "All staff who operate AI tools complete annual AI literacy training appropriate to their role.",
+      "expected": {
+        "nist_ai_rmf": ["GOVERN 2.2"],
+        "iso_42001": ["7.2", "7.3", "A.4.6"],
+        "eu_ai_act": ["Art. 4"]
+      }
+    },
+    {
+      "id": "red-team-testing",
+      "description": "We run red team exercises and adversarial testing against the model before launch to find unsafe outputs.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 2.6", "MEASURE 2.7", "GOVERN 4.3"],
+        "iso_42001": ["A.6.2.4"],
+        "eu_ai_act": ["Art. 15", "Art. 55"]
+      }
+    },
+    {
+      "id": "incident-runbook",
+      "description": "A documented incident response runbook covers AI malfunctions, and we communicate incidents to affected users.",
+      "expected": {
+        "nist_ai_rmf": ["MANAGE 4.3", "MANAGE 2.3", "GOVERN 4.3"],
+        "iso_42001": ["A.8.4", "10.2", "A.3.3"],
+        "eu_ai_act": ["Art. 73"]
+      }
+    },
+    {
+      "id": "chatbot-disclosure",
+      "description": "The chatbot tells users up front that they are interacting with an AI assistant and not a person.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 2.8", "MANAGE 1.4"],
+        "iso_42001": ["A.8.2", "A.8.5"],
+        "eu_ai_act": ["Art. 50"]
+      }
+    },
+    {
+      "id": "executive-accountability",
+      "description": "The board receives a quarterly report on AI risk and the chief executive signs off on high risk deployments.",
+      "expected": {
+        "nist_ai_rmf": ["GOVERN 2.3"],
+        "iso_42001": ["5.1", "5.3", "9.3"],
+        "eu_ai_act": null
+      }
+    },
+    {
+      "id": "data-provenance",
+      "description": "We record the provenance and lineage of every training dataset we acquire, back to its original source.",
+      "expected": {
+        "nist_ai_rmf": ["MAP 2.3", "MAP 4.1"],
+        "iso_42001": ["A.7.5", "A.7.3"],
+        "eu_ai_act": ["Art. 10"]
+      }
+    },
+    {
+      "id": "decommissioning",
+      "description": "There is a documented procedure for decommissioning and retiring an AI system safely, including disposal of the model and its data.",
+      "expected": {
+        "nist_ai_rmf": ["GOVERN 1.7"],
+        "iso_42001": null,
+        "eu_ai_act": null
+      }
+    },
+    {
+      "id": "post-market-monitoring",
+      "description": "Deployed models are monitored in production for drift and degradation against defined alert thresholds.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 2.4", "MANAGE 4.1", "MANAGE 2.2"],
+        "iso_42001": ["A.6.2.6", "9.1"],
+        "eu_ai_act": ["Art. 72"]
+      }
+    },
+    {
+      "id": "risk-tolerance",
+      "description": "Organisational risk tolerance for AI is documented, and the level of risk management effort is set against it.",
+      "expected": {
+        "nist_ai_rmf": ["MAP 1.5", "GOVERN 1.3"],
+        "iso_42001": ["6.1.2", "8.2"],
+        "eu_ai_act": ["Art. 9"]
+      }
+    },
+    {
+      "id": "impact-assessment",
+      "description": "Before deployment we complete an impact assessment covering effects on individuals, groups and fundamental rights.",
+      "expected": {
+        "nist_ai_rmf": ["MAP 5.1", "GOVERN 4.2", "MAP 3.2"],
+        "iso_42001": ["6.1.4", "A.5.2", "A.5.3", "A.5.4"],
+        "eu_ai_act": ["Art. 27"]
+      }
+    },
+    {
+      "id": "technical-documentation",
+      "description": "Technical documentation describing the system design, its knowledge limits and how outputs should be used is produced before release.",
+      "expected": {
+        "nist_ai_rmf": ["MAP 2.2", "MAP 2.1"],
+        "iso_42001": ["A.6.2.7", "A.6.2.3"],
+        "eu_ai_act": ["Art. 11", "Art. 13"]
+      }
+    },
+    {
+      "id": "training-data-access-control",
+      "description": "Training data is encrypted at rest and access is granted on least privilege with authentication enforced.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 2.7"],
+        "iso_42001": null,
+        "eu_ai_act": ["Art. 15"]
+      }
+    },
+    {
+      "id": "privacy-lawful-basis",
+      "description": "Personal data used by the model has a documented lawful basis and privacy risk has been examined.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 2.10"],
+        "iso_42001": ["A.7.3", "A.7.2"],
+        "eu_ai_act": ["Art. 10"]
+      }
+    },
+    {
+      "id": "appeal-channel",
+      "description": "End users can report a problem with an automated decision and appeal the outcome through a published channel.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 3.3", "GOVERN 5.1"],
+        "iso_42001": ["A.8.3", "A.3.3"],
+        "eu_ai_act": null
+      }
+    },
+    {
+      "id": "ai-policy",
+      "description": "An approved written AI policy defines acceptable and prohibited uses and is reviewed annually.",
+      "expected": {
+        "nist_ai_rmf": ["GOVERN 1.2", "GOVERN 1.4", "GOVERN 4.1"],
+        "iso_42001": ["A.2.2", "5.2", "A.2.4"],
+        "eu_ai_act": ["Art. 17"]
+      }
+    },
+    {
+      "id": "internal-audit",
+      "description": "An independent internal audit assesses the AI management system at planned intervals and raises corrective actions.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 1.3", "MEASURE 2.13"],
+        "iso_42001": ["9.2", "10.2"],
+        "eu_ai_act": ["Art. 43"]
+      }
+    },
+    {
+      "id": "kill-switch",
+      "description": "There is a tested mechanism to deactivate or disengage a model that is behaving inconsistently with its intended use.",
+      "expected": {
+        "nist_ai_rmf": ["MANAGE 2.4"],
+        "iso_42001": ["A.6.2.6", "A.9.2"],
+        "eu_ai_act": ["Art. 14"]
+      }
+    },
+    {
+      "id": "synthetic-content-marking",
+      "description": "Images and audio produced by the generative system are watermarked and labelled as AI generated content.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 2.8"],
+        "iso_42001": ["A.8.2", "A.8.5"],
+        "eu_ai_act": ["Art. 50"]
+      }
+    },
+    {
+      "id": "environmental-impact",
+      "description": "The energy consumption and carbon footprint of model training is assessed and documented.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 2.12"],
+        "iso_42001": ["A.5.5", "A.4.5"],
+        "eu_ai_act": null
+      }
+    },
+    {
+      "id": "intended-purpose",
+      "description": "A written statement defines the intended purpose of the system and the uses that are explicitly out of scope.",
+      "expected": {
+        "nist_ai_rmf": ["MAP 1.1", "MAP 3.3", "MAP 2.1"],
+        "iso_42001": ["A.9.4", "A.6.2.2", "A.9.3"],
+        "eu_ai_act": ["Art. 13"]
+      }
+    },
+    {
+      "id": "evaluation-harness",
+      "description": "An automated evaluation suite runs in the release pipeline with documented acceptance criteria and blocks a release on regression.",
+      "expected": {
+        "nist_ai_rmf": ["MEASURE 2.1", "MEASURE 2.3", "MEASURE 1.1"],
+        "iso_42001": ["A.6.2.4"],
+        "eu_ai_act": ["Art. 15"]
+      }
+    },
+    {
+      "id": "serious-incident-reporting",
+      "description": "Serious incidents are reported to the market surveillance authority within the required deadline.",
+      "expected": {
+        "nist_ai_rmf": ["MANAGE 4.3", "GOVERN 4.3"],
+        "iso_42001": ["A.8.4", "A.8.3"],
+        "eu_ai_act": ["Art. 73"]
+      }
+    },
+    {
+      "id": "pretrained-model-monitoring",
+      "description": "Pre-trained models supplied by a third party are monitored for vendor updates as part of routine maintenance.",
+      "expected": {
+        "nist_ai_rmf": ["MANAGE 3.2", "MANAGE 3.1"],
+        "iso_42001": ["A.10.3", "A.10.2"],
+        "eu_ai_act": ["Art. 53"]
+      }
+    },
+    {
+      "id": "gpai-copyright-policy",
+      "description": "As a general purpose AI model provider we publish a summary of training content and maintain a copyright policy.",
+      "expected": {
+        "nist_ai_rmf": ["GOVERN 6.1", "MAP 4.1"],
+        "iso_42001": ["A.7.3", "A.10.4"],
+        "eu_ai_act": ["Art. 53"]
+      }
+    },
+    {
+      "id": "change-management",
+      "description": "Changes are promoted to production through defined release gates with change control and version control applied.",
+      "expected": {
+        "nist_ai_rmf": ["MANAGE 4.1", "MANAGE 1.1", "GOVERN 1.7"],
+        "iso_42001": ["6.3", "A.6.2.5", "8.1"],
+        "eu_ai_act": ["Art. 17"]
+      }
+    }
+  ]
+}
